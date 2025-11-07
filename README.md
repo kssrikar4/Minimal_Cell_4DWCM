@@ -85,8 +85,8 @@ The ```simTime``` variable is how much more biological time you want to run. If 
 
 | Model Component | Simulation Files | Input Data |
 |---------------|-------------|-------------|
-|RDME - Reaction-Diffusion Master Equaion|``` Diffusion.py ```, ``` MC_RDME_initialization.py ```, ``` Rxns_RDME.py ``` | ``` one_aramMulder-local_min.json ```, ``` LargeSubunit.xlsx ```|
+|RDME - Reaction-Diffusion Master Equaion| ``` MC_RDME_initialization.py ```, ``` Rxns_RDME.py ```,``` Diffusion.py ```,```RegionsAndComplexes.py```,```RibosomesRDME.py```,```InitRdmeDna.py``` | ``` oneParamMulder-local_min.json ```, ``` LargeSubunit.xlsx ```|
 |CME - Chemical Master Equation|``` MC_CME.py ```,``` Run_CME.py ```, ``` Rxns_CME.py ``` | ``` kinetic_params.xlsx ```|
-|ODE - Ordinary Differential Equations| ``` Rxns_ODE.py ```| ``` kinetic_params.xlsx ```, ``` protein_metabolites.xlsx ```, ``` Syn3A_updated.xml ```|
+|ODE - Ordinary Differential Equations| ``` Rxns_ODE.py ```,```integrate.py```| ``` kinetic_params.xlsx ```, ``` protein_metabolites.xlsx ```, ``` Syn3A_updated.xml ```|
 |BD (DNA) - Brownian Dynamics of DNA| ``` InitRdmeDNA.py ```, ``` SpatialDnaDynamics.py ```| ``` in_BD_lengths_LAMMPS_test.txt ```, ``` loop_params.txt ```, ``` syn3A.gb ```|
 
