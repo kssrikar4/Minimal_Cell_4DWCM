@@ -90,5 +90,8 @@ The ```simTime``` variable is how much more biological time you want to run. If 
 |ODE - Ordinary Differential Equations| ``` Rxns_ODE.py ```, ```integrate.py```| ``` kinetic_params.xlsx ```, ``` protein_metabolites.xlsx ```, ``` Syn3A_updated.xml ```|
 |BD (DNA) - Brownian Dynamics of DNA| ``` InitRdmeDNA.py ```, ``` SpatialDnaDynamics.py ```| ``` in_BD_lengths_LAMMPS_test.txt ```, ``` loop_params.txt ```, ``` syn3A.gb ```|
 
+
+## Connectivity of 4DWCM Python Modules
+
 ![plot](./4DWCM_Dependency.png)
 
