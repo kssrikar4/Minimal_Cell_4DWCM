@@ -1,3 +1,0 @@
-sudo apt install texlive-latex-base
-sudo apt-get install dvipng texlive-latex-extra texlive-fonts-recommended
-sudo apt-get install cm-super

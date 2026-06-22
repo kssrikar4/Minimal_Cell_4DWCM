@@ -2,29 +2,27 @@
 
 This repository contains the 4D whole-cell model for the genetically minimal cell, JCVI-syn3A. Below, you will find instructions on required programs that need to be installed, instructions on how to run the model, and descriptions of individual simulation files.
 
-## Required Programs
+## Local Installation & Setup
 
-- [Lattice Microbes](https://github.com/Luthey-Schulten-Lab/Lattice_Microbes) - [https://github.com/Luthey-Schulten-Lab/Lattice_Microbes](https://github.com/Luthey-Schulten-Lab/Lattice_Microbes)
-- [odecell](https://github.com/Luthey-Schulten-Lab/odecell) - [https://github.com/Luthey-Schulten-Lab/odecell](https://github.com/Luthey-Schulten-Lab/odecell) (Install this in the same conda environment as Lattice Microbes AFTER building Lattice Microbes)
-- [btree_chromo](https://github.com/Luthey-Schulten-Lab/btree_chromo_gpu) - [https://github.com/Luthey-Schulten-Lab/btree_chromo_gpu](https://github.com/Luthey-Schulten-Lab/btree_chromo_gpu) (Requires installation with Kokkos enabled version of LAMMPS)
-- [sc_chain_generation](https://github.com/Luthey-Schulten-Lab/sc_chain_generation) - [https://github.com/Luthey-Schulten-Lab/sc_chain_generation](https://github.com/Luthey-Schulten-Lab/sc_chain_generation)
-- [FreeDTS](https://github.com/weria-pezeshkian/FreeDTS) - [https://github.com/weria-pezeshkian/FreeDTS](https://github.com/weria-pezeshkian/FreeDTS) (OPTIONAL)
+We have provided a fully automated setup and compilation script `setup_and_build.sh` that sets up all dependencies locally under this directory (the python virtual environment is created under `./py` and all cloned repositories/built libraries are located in `./software`).
+
+To compile and build all required software, execute:
+
+```bash
+chmod +x setup_and_build.sh
+./setup_and_build.sh
+```
+
+This script will compile Lattice Microbes, LAMMPS (with Kokkos/CUDA support), btree_chromo, FreeDTS, sc_chain_generation, and configure the local conda environment dynamically.
 
 ## Running the Model
 
-The model here is runnbale as-is and does not reuire its own installation. Once you have installed the required programs listed above, before running the model, you must activate the conda environment in which you built Lattice Microbes:
+Once `setup_and_build.sh` runs successfully, activate the local environment and launch the simulation:
 
+```bash
+conda activate ./py
+python Whole_Cell_Minimal_Cell.py -od replicate1 -t 1200 -cd 0 -drs 13 -dsd ./software/
 ```
-conda activate envName
-```
-
-Then, you must make sure that your LAMMPS installation for ```btree_chromo``` is in your path. You can check this by running:
-
-```
-lammps -h
-```
-
-Once your environment is ready, you can now run the model.
 
 The python file ```Whole_Cell_Minimal_Cell.py``` is the main executable for the model. The executable has the following user input variables:
 
@@ -37,11 +35,21 @@ The python file ```Whole_Cell_Minimal_Cell.py``` is the main executable for the 
 | --dnaRngSeed | -drs | Integer RNG seed that will be used for the chromosome programs. |
 | --workingDirectory | -wd | Directory where the simulation is being run in. Defaults to current directory, no input is needed. Only necessary to change on clusters. |
 
-Example executable:
+## Analyzing Results
 
+To analyze the simulation results using the compiled `./py` virtual environment, use the unified analysis notebook:
+
+```bash
+conda activate ./py
+jupyter notebook analysis/Analyze.ipynb
 ```
-python Whole_Cell_Minimal_Cell.py -od replicate1 -t 1200 -cd 1 -drs 13 -dsd /home/zane/Software/
-```
+
+This notebook integrates:
+- **Physiological Growth**: Volumes, surface areas, and macromolecular dynamics over time.
+- **Lattice Master Equation (RDME)**: Spatial partitioning checks and active ribosome distribution projection plots.
+- **Genetic Information Processing**: Surface and volume doubling time calculations.
+- **Timing Benchmarks**: Plotting runtimes across simulation solvers.
+
 
 ## Restarting a simulation
 
@@ -94,4 +102,16 @@ The ```simTime``` variable is how much more biological time you want to run. If 
 ## Connectivity of 4DWCM Python Modules
 
 ![plot](./4DWCM_Dependency.png)
+
+## Acknowledgements
+
+The code and models in this repository are based on the 4D Whole-Cell Model of the genetically minimal cell developed by the Luthey-Schulten Group at the University of Illinois Urbana-Champaign (UIUC).
+
+Key authors and contributors include:
+- **Luthey-Schulten Lab** (UIUC) - [Luthey-Schulten Lab Website](https://schulten.chem.illinois.edu/)
+- **Benjamin R. Gilbert** (Email: [brg4@illinois.edu](mailto:brg4@illinois.edu))
+- **Zane Thornburg** and other members of the Luthey-Schulten Group.
+
+We acknowledge their ground-breaking work on the 4D Whole-Cell Model of JCVI-syn3A.
+
 

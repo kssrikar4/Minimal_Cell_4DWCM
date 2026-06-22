@@ -10,8 +10,7 @@ import matplotlib.patches as patches
 import numpy as np
 import pandas as pd
 
-plt.rcParams['text.usetex'] = True
-plt.rcParams['text.latex.preamble'] = r'\usepackage[helvet]{sfmath}'
+plt.rcParams['text.usetex'] = False
 
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = 'Arial'

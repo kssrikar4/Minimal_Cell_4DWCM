@@ -1346,29 +1346,29 @@ def rescueDNA(sim_properties):
 
     workDir = sim_properties['working_directory']+'DNA/'
     
-    oldDNAFile = workDir + 'dna_monomers_{:d}.bin'.format(sim_properties['last_last_DNA_step'])
+    last_last = sim_properties['last_last_DNA_step']
     
+    if last_last is None:
+        oldDNAFile = workDir + 'x_chain_Syn3A_chromosome_init_rep00001.bin'
+        oldRepState = None
+        oldChromoTopo = None
+    else:
+        oldDNAFile = workDir + 'dna_monomers_{:d}.bin'.format(last_last)
+        oldRepState = workDir + 'rep_state_{:d}.txt'.format(last_last)
+        oldChromoTopo = workDir + 'chromo_topo_{:d}.dat'.format(last_last)
+        
     rescueDNAFile = workDir + 'dna_monomers_{:d}.bin'.format(sim_properties['last_DNA_step'])
-    
-    os.system('cp ' + oldDNAFile + ' ' + rescueDNAFile)
-    
-#     oldQuatFile = workDir + 'dna_quats_{:d}.bin'.format(sim_properties['last_last_DNA_step'])
-    
-#     rescueQuatFile = workDir + 'dna_quats_{:d}.bin'.format(sim_properties['last_DNA_step'])
-    
-#     os.system('cp ' + oldQuatFile + ' ' + rescueQuatFile)
-    
-    oldRepState = workDir + 'rep_state_{:d}.txt'.format(sim_properties['last_last_DNA_step'])
-                                                          
     rescueRepState = workDir + 'rep_state_{:d}.txt'.format(sim_properties['last_DNA_step'])
-                                                          
-    os.system('cp ' + oldRepState + ' ' + rescueRepState)
-    
-    oldChromoTopo = workDir + 'chromo_topo_{:d}.dat'.format(sim_properties['last_last_DNA_step'])
-    
     rescueChromoTopo = workDir + 'chromo_topo_{:d}.dat'.format(sim_properties['last_DNA_step'])
     
-    os.system('cp ' + oldChromoTopo + ' ' + rescueChromoTopo)
+    if oldDNAFile and os.path.exists(oldDNAFile):
+        os.system('cp ' + oldDNAFile + ' ' + rescueDNAFile)
+        
+    if oldRepState and os.path.exists(oldRepState):
+        os.system('cp ' + oldRepState + ' ' + rescueRepState)
+        
+    if oldChromoTopo and os.path.exists(oldChromoTopo):
+        os.system('cp ' + oldChromoTopo + ' ' + rescueChromoTopo)
     
     return None
 #########################################################################################

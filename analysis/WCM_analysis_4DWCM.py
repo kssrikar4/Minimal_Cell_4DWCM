@@ -34,8 +34,7 @@ import WCM_gene as gene
 import WCM_diagnosis as diagnosis
 
 # use LaTeX fonts in the plot
-plt.rcParams['text.usetex'] = True
-plt.rcParams['text.latex.preamble'] = r'\usepackage[helvet]{sfmath}'
+plt.rcParams['text.usetex'] = False
 
 plt.rcParams['font.family'] = 'sans-serif'
 plt.rcParams['font.sans-serif'] = 'Arial'
