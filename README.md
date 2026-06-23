@@ -21,7 +21,7 @@ Once `setup_and_build.sh` runs successfully, activate the local environment and 
 
 ```bash
 conda activate ./py
-python Whole_Cell_Minimal_Cell.py -od replicate1 -t 1200 -cd 0 -drs 13 -dsd ./software/
+python Whole_Cell_Minimal_Cell.py -od replicate1 -t 1200 -cd 0 -drs 13 -dsd ./software/ > Whole_Cell_Minimal_Cell.log
 ```
 
 The python file ```Whole_Cell_Minimal_Cell.py``` is the main executable for the model. The executable has the following user input variables:
